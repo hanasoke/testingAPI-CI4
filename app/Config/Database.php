@@ -29,7 +29,7 @@ class Database extends Config
         'hostname'     => 'localhost:82',
         'username'     => 'root',
         'password'     => '',
-        'database'     => 'api',
+        'database'     => 'campus',
         'DBDriver'     => 'MySQLi',
         'DBPrefix'     => '',
         'pConnect'     => false,

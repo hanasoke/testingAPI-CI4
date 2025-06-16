@@ -20,7 +20,35 @@ class Student extends BaseController
         return $this->respond($students);
     }
 
-    
+    // Get Single Student (GET)
+    public function show($id = null)
+    {
+        $student = $this->model->find($id);
+
+        if (!$student) {
+            return $this->failNotFound('Student not found');
+        }
+
+        return $this->respond($student);
+    }
+
+    // Create Student (POST)
+    public function create()
+    {
+        $data = $this->request->getJSON();
+
+        if (!$this->model->insert($data)) {
+            return $this->failValidationErrors($this->model->errors());
+        }
+
+        $response = [
+            'status' => 201,
+            'error' => null,
+            'messages' => [
+                'success' => 'Student created successfully'
+            ]
+        ]
+    }
 
 
 }

@@ -11,8 +11,6 @@ class StudentModel extends Model
     protected $allowedFields = ['name', 'email', 'sn', 'address', 'age', 'faculty'];
 
     protected $useTimeStamps = true;
-    protected $createField = 'created_at',
-    protected $updatedField = 'updated_at';
 
     protected $validationRules = [
         'name' => 'required',

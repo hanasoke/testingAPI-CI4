@@ -15,7 +15,7 @@ class StudentModel extends Model
     protected $updatedField = 'updated_at';
 
     protected $validationRules = [
-        'name' => 'required|min_length[3]',
+        'name' => 'required',
         'email' => 'required|valid_email|is_unique[students.email]',
         'sn' => 'required|is_unique[students.sn]',
         'age' => 'required|numeric',

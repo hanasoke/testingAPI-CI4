@@ -1,8 +1,8 @@
 <?php 
 
-namespace App\Controllers;
+namespace App\Controllers\Api;
 use App\Controllers\BaseController;
-use Codeigniter\API\ResponseTrait;
+use CodeIgniter\API\ResponseTrait;
 
 class Student extends BaseController 
 {

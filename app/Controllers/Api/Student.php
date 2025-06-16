@@ -17,7 +17,10 @@ class Student extends BaseController
     public function index()
     {
         $students = $this->model->findAll();
-        return $this->respond($students);
+        return $this->respond([
+            'status' => 200,
+            'data' => $students
+        ]);
     }
 
     // Get Single Student (GET)
@@ -29,27 +32,26 @@ class Student extends BaseController
             return $this->failNotFound('Student not found');
         }
 
-        return $this->respond($student);
+        return $this->respond([
+            'status' => 200,
+            'data' => $student
+        ]);
     }
 
     // Create Student (POST)
     public function create()
     {
-        $data = $this->request->getJSON();
+        $data = $this->request->getJSON(true);
 
         if (!$this->model->insert($data)) {
             return $this->failValidationErrors($this->model->errors());
         }
 
-        $response = [
+        return $this->respondCreated([
             'status' => 201,
-            'error' => null,
-            'messages' => [
-                'success' => 'Student created successfully'
-            ]
-        ];
-
-        return $this->respondCreated($response);
+            'messages' => 'Student created successfully',
+            'data' => $this->model->find($this->model->getInsertID())
+        ]);
     }
 
     // Update Student (PUT)
@@ -83,15 +85,16 @@ class Student extends BaseController
 
         $this->model->delete($id);
 
-        $response = [
+        return $this->respondDeleted([
             'status' => 200,
-            'error' => null,
-            'messages' => [
-                'success' => 'Student deleted successfully'
-            ]
-        ];
+            'messages' => 'Student deleted successfully'
+        ]);
+    }
 
-        return $this->respondDeleted($response);
+    // Handle OPTIONS requests for CORS
+    public function options()
+    {
+        return $this->response->setStatusCode(200);
     }
 }
 

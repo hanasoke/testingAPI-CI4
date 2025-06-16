@@ -9,20 +9,14 @@ $routes->get('/', 'Home::index');
 
 // Students API Routes 
 $routes->group('api', ['namespace' => 'App\Controllers\Api'], function($routes) {
-    
-    
-    // $routes->resource('students', [
-    //     'controller' => 'Student',
-    //     'except' => ['new', 'edit'] // We don't need these for API
-    // ]);
 
-    // define manually
     $routes->get('students', 'Student::index');
-    $routes->get('students/(:segment)', 'Student::show/$1');
+    $routes->get('students/(:num)', 'Student::show/$1');
     $routes->post('students', 'Student::create');
+    $routes->put('students/(:num)', 'Student::update/$1');
+    $routes->delete('students/(:num)', 'Student::delete/$1');
 
-    $routes->put('students/(:segment)', 'Student::update/$1');
-    
-    $routes->delete('students/(:segment)', 'Student::delete/$1');
-
+    // CORS preflight
+    $routes->options('students', 'Student::options');
+    $routes->options('students/(:num)', 'Student::options');
 });

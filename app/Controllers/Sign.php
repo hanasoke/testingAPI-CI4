@@ -7,34 +7,15 @@ class Sign extends BaseController
 {
     public function login()
     {
-        $data = [
-            'title' => 'Login Page'
-        ];
-        
-        return view('sign/login', $data);
+        echo view('templates/sign/header');
+        echo view('sign/login');
+        echo view('templates/sign/footer');
     }
-    
-    public function attemptLogin()
-    {
-        // Add your login validation and processing here
-    }
-    
+
     public function register()
     {
-        $data = [
-            'title' => 'Register Account'
-        ];
-        
-        return view('sign/register', $data);
-    }
-    
-    public function attemptRegister()
-    {
-        // Add your registration validation and processing here
-    }
-    
-    public function forgotPassword()
-    {
-        // Add forgot password functionality
+        echo view('templates/sign/header');
+        echo view('sign/register');
+        echo view('templates/sign/footer');
     }
 }

@@ -22,11 +22,5 @@ $routes->get('/', 'Home::index');
 //     $routes->options('students/(:num)', 'Student::options');
 // });
 
-// Auth Routes
-$routes->group('sign', function($routes) {
-    $routes->get('login', 'Sign::login');
-    $routes->post('login', 'Sign::attemptLogin');
-    $routes->get('register', 'Sign::register');
-    $routes->post('register', 'Sign::attemptRegister');
-    $routes->get('forgot-password', 'Sign::forgotPassword');
-});
+$routes->get('sign/login', 'Sign::login');
+$routes->get('sign/register', 'Sign::register');

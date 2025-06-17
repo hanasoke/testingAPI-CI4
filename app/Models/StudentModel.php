@@ -19,7 +19,7 @@ class StudentModel extends Model
         'sn' => 'required|is_unique[students.sn,student_id,{student_id}]',
         'age' => 'required|numeric',
         'faculty' => 'required'
-    ]
+    ];
 
     protected $validationMessages = [
         'email' => [

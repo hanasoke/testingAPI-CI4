@@ -5,7 +5,7 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'Sign::login');
+$routes->get('/', 'Home::index');
 // $routes->get('/', 'Controller::function');
 
 // Students API Routes 
